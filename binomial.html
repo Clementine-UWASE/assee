@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binomial Equation Generator</title>
+</head>
+<body>
+    <script>
+        // Function to generate a binomial equation
+        function generateBinomialEquation(a, b, n) {
+            // Format the equation based on coefficients (a, b) and exponent (n)
+            const term1 = `${a}x^${n}`;
+            const term2 = b >= 0 ? `+ ${b}` : `- ${Math.abs(b)}`;
+
+            return `${term1} ${term2}`;
+        }
+
+        // Prompt the user for coefficients and exponent
+        const coefficientA = parseFloat(prompt("Enter the coefficient 'a':"));
+        const coefficientB = parseFloat(prompt("Enter the coefficient 'b':"));
+        const exponentN = parseInt(prompt("Enter the exponent 'n':"));
+
+        // Check if the input is valid
+        if (isNaN(coefficientA) || isNaN(coefficientB) || isNaN(exponentN)) {
+            console.log("Invalid input. Please enter valid coefficients and exponent.");
+        } else {
+            // Generate and display the binomial equation
+            const binomialEquation = generateBinomialEquation(coefficientA, coefficientB, exponentN);
+            console.log("Generated Binomial Equation: " + binomialEquation);
+        }
+    </script>
+</body>
+</html>

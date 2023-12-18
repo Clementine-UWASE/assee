@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Dropdown Menu</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #147aa9;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      margin-top: -400px;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #dad7e1;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      color: #333;
+      width: 100px;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+      
+    }
+    #drop{
+        width: 120px;
+       
+    }
+  </style>
+</head>
+<body>
+  
+
+  <div class="dropdown">
+    <button id="drop">option</button>
+    <div class="dropdown-content">
+      <a href="#">Backend</a>
+      <a href="#">Front-end</a>
+      <a href="#">Full-stack</a>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testimonial Slider</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #414141;
+      text-align: center;
+    }
+
+    #testimonial-container {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .testimonial {
+      display: none;
+      text-align: left;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .testimonial img {
+      max-width: 100%;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .active {
+      display: block;
+    }
+
+    .controls {
+      margin-top: 10px;
+    }
+
+    .prev, .next {
+      padding: 10px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .prev {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="testimonial-container">
+    <div class="testimonial active">
+      <img src="pic.jpg" alt="User 1">
+      <p>I specialize in UI/UX design and front-end development,merging creativity with technology to craft visually appealing
+        digital experience</p>
+      <p><strong>Clementine UWASE</strong></p>
+    </div>
+    <div class="testimonial">
+      <img src="sky.PNG" alt="User 2">
+      <p>Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero.</p>
+      <p><strong>John Smith</strong></p>
+    </div>
+    <div class="testimonial">
+      <img src="ishy.PNG" alt="User 3">
+      <p>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut.</p>
+      <p><strong>Bob ishy</strong></p>
+    </div>
+    <div class="controls">
+      <button class="prev" onclick="changeTestimonial(-1)">Previous</button>
+      <button class="next" onclick="changeTestimonial(1)">Next</button>
+    </div>
+  </div>
+
+  <script>
+    let currentTestimonial = 0;
+    const testimonials = document.querySelectorAll('.testimonial');
+
+    function showTestimonial(index) {
+      testimonials[currentTestimonial].classList.remove('active');
+      currentTestimonial = (index + testimonials.length) % testimonials.length;
+      testimonials[currentTestimonial].classList.add('active');
+    }
+
+    function changeTestimonial(direction) {
+      showTestimonial(currentTestimonial + direction);
+    }
+
+    setInterval(() => changeTestimonial(1), 5000); // Auto-advance every 5 seconds
+  </script>
+
+</body>
+</html>

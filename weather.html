@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+
+    header {
+      background-color: #3498db;
+      color: #fff;
+      padding: 20px;
+    }
+
+    #weather-container {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #weather-icon {
+      max-width: 100px;
+      margin: 0 auto;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    input {
+      padding: 10px;
+      width: 60%;
+      margin-right: 10px;
+    }
+
+    button {
+      padding: 10px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    footer {
+      background-color: #3498db;
+      color: #fff;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Weather App</h1>
+  </header>
+
+  <div id="weather-container">
+    <h2>Check the Weather</h2>
+    <form id="weather-form">
+      <input type="text" id="city" placeholder="Enter city" required>
+      <button type="button" onclick="getWeather()">Get Weather</button>
+    </form>
+    <div id="weather-icon"></div>
+    <p id="temperature"></p>
+    <p id="description"></p>
+  </div>
+
+  <footer>
+    &copy; 2023 Weather App
+  </footer>
+
+  <script>
+    function getWeather() {
+      const apiKey = 'YOUR_API_KEY'; 
+      const city = document.getElementById('city').value;
+
+      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
+        .then(response => response.json())
+        .then(data => {
+          const iconCode = data.weather[0].icon;
+          const iconUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
+
+          document.getElementById('weather-icon').innerHTML = `<img src="${iconUrl}" alt="Weather Icon">`;
+          document.getElementById('temperature').textContent = `Temperature: ${Math.round(data.main.temp - 273.15)}°C`;
+          document.getElementById('description').textContent = `Description: ${data.weather[0].description}`;
+        })
+        .catch(error => console.error('Error fetching weather data:', error));
+    }
+  </script>
+
+</body>
+</html>
